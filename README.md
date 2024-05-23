@@ -1,2 +1,2 @@
 # FaqDemo
-Responsive React, TypeScript, Less Demo Application
+Responsive React, TypeScript, Less - Demo Application
