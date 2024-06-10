@@ -1,58 +1,36 @@
+// https://webpack.js.org/guides/getting-started/
+
+// Import node path module
 const path = require("path");
 
-/*We are basically telling webpack to take index.js from entry. Then check for all file extensions in resolve. 
-After that apply all the rules in module.rules and produce the output and place it in main.js in the public folder.*/
+let production = process.env.NODE_ENV === "production";
 
-module.exports={
-    /** "mode"
-     * the environment - development, production, none. tells webpack 
-     * to use its built-in optimizations accordingly. default is production 
-     */
-    mode: "development", 
-    /** "entry"
-     * the entry point 
-     */
-    entry: "./src/index.tsx",
-    devtool: "inline-source-map",
+let config = {
+    // the entry point to the app
+    entry: "./src/index",
     output: {
-        /** "path"
-         * the folder path of the output file 
-         */
-        path: path.resolve(__dirname, "build"),
-        /** "filename"
-         * the name of the output file 
-         */
+        // the folder path of the output file 
+        path: path.resolve(__dirname, "dist"),
+        // the name of the output file 
         filename: "bundle.js"
     },
-    /** "target"
-     * setting "node" as target app (server side), and setting it as "web" is 
-     * for browser (client side). Default is "web"
-     */
-    target: "web",
+
+    // source map for debugging - it is added to the output file (bundle.js in this case)
+    devtool: "inline-source-map", // Note: use "source-map" for production
+
+    // the environment - development, production, none. tells webpack what optimizations to use; default is production 
+    mode: "development",
+
     devServer: {
-        /** "port" 
-         * port of dev server
-        */
-        port: "9500",
-        /** "static" 
-         * This property tells Webpack what static file it should serve
-        */
-        static: ["./public"],
-        /** "open" 
-         * opens the browser after server is successfully started
-        */
-        open: true,
-        /** "hot"
-         * enabling and disabling HMR. takes "true", "false" and "only". 
-         * "only" is used if enable Hot Module Replacement without page 
-         * refresh as a fallback in case of build failures
-         */
-        hot: true ,
-        /** "liveReload"
-         * disable live reload on the browser. "hot" must be set to false for this to work
-        */
-        liveReload: true
+        port: "9500", // the port to run the server on
+        static: "./dist", // the folder to serve the files from
+        open: true, // opens the browser after server is successfully started
+        hot: false, // Note: "hot" must be set to false for "liveReload" to work
+        liveReload: true // reloads the page when the files change
     },
+
+    target: "web", // "node" or "web" (web is default)
+
     resolve: {
         /** "extensions" 
          * If multiple files share the same name but have different extensions, webpack will 
@@ -61,6 +39,7 @@ module.exports={
          */
         extensions: ['.js', '.json', '.ts', '.tsx'] 
     },
+    
     module:{
         /** "rules"
          * This says - "Hey webpack compiler, when you come across a path that resolves to a '.js or .jsx' 
@@ -72,7 +51,7 @@ module.exports={
             {
                 test: /\.(js|jsx)$/,        // kind of file extension this rule should look for and apply in test
                 exclude: /node_modules/,    // folder to be excluded
-                use:  'babel-loader'        // loader which we are going to use
+                use:  'babel-loader'        // loader which we are going to use -> additonal configuration in .babelrc file
             },
             { 
 				test: /\.(ts|tsx)$/i,
@@ -86,9 +65,9 @@ module.exports={
             {
                 test: /\.less$/i,
                 use: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader' },
-                    { loader: 'less-loader' }
+                    { loader: 'style-loader' }, // Injects styles into DOM
+                    { loader: 'css-loader' },   // Resolves CSS imports and translates CSS into CommonJS
+                    { loader: 'less-loader' }   // Compiles Less to CSS
                 ]
             },
             {
@@ -106,3 +85,13 @@ module.exports={
         ]
     }
 }
+
+if(production){
+    config.mode = "production";
+    config.devServer = undefined;
+    config.devtool = "source-map";
+    config.watch = false;
+    config.output.path = path.resolve(__dirname, "build");
+}
+
+module.exports = config;
