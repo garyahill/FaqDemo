@@ -1,8 +1,7 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-      "outDir": "./build",
-      "sourceMap": false  // Disable source maps for production
+      "outDir": "./build/"
     }
   }
   

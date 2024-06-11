@@ -2,12 +2,14 @@
 
 // Import node path module
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 
-let production = process.env.NODE_ENV === "production";
+let isProduction = process.env.NODE_ENV === "production";
+// console.log(process.env.NODE_ENV);
 
 let config = {
     // the entry point to the app
-    entry: "./src/index",
+    entry: "./src/index.tsx",
     output: {
         // the folder path of the output file 
         path: path.resolve(__dirname, "dist"),
@@ -37,9 +39,15 @@ let config = {
          * resolve the one with the extension listed first in the array and skip the rest. 
          * This is what enables users to leave off the extension when importing
          */
-        extensions: ['.js', '.json', '.ts', '.tsx'] 
+        //extensions: ['.js', '.json', '.ts', '.tsx'] - TODO: remove this line
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.less']
     },
-    
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'index.html'
+         })
+	],
     module:{
         /** "rules"
          * This says - "Hey webpack compiler, when you come across a path that resolves to a '.js or .jsx' 
@@ -49,20 +57,6 @@ let config = {
          */
         rules: [
             {
-                test: /\.(js|jsx)$/,        // kind of file extension this rule should look for and apply in test
-                exclude: /node_modules/,    // folder to be excluded
-                use:  'babel-loader'        // loader which we are going to use -> additonal configuration in .babelrc file
-            },
-            { 
-				test: /\.(ts|tsx)$/i,
-                exclude: /node_modules/,
-				use: 'ts-loader',
-			},
-            {
-				test: /\.css$/,
-				use: ["style-loader", "css-loader"],
-			},
-            {
                 test: /\.less$/i,
                 use: [
                     { loader: 'style-loader' }, // Injects styles into DOM
@@ -70,6 +64,20 @@ let config = {
                     { loader: 'less-loader' }   // Compiles Less to CSS
                 ]
             },
+            {
+				test: /\.css$/,
+				use: ["style-loader", "css-loader"],
+			},
+            { 
+				test: /\.(ts|tsx)$/i,
+                exclude: /node_modules/,
+				use: {
+					loader: "ts-loader",
+					options: {
+					    configFile: isProduction ? "tsconfig.prod.json" : "tsconfig.json"
+					},
+				},
+			},
             {
 				test: /\.(png|jpg|jpeg|gif|pdf)$/,
 				type: 'asset/resource',
@@ -86,12 +94,15 @@ let config = {
     }
 }
 
-if(production){
+if(isProduction){
     config.mode = "production";
     config.devServer = undefined;
     config.devtool = "source-map";
     config.watch = false;
-    config.output.path = path.resolve(__dirname, "build");
+    config.output = {
+        path: path.resolve(__dirname, "build"),
+        filename: "bundle.js"
+    };
 }
 
 module.exports = config;
