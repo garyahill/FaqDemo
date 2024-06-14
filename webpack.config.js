@@ -2,7 +2,9 @@
 
 // Import node path module
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin'); 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let isProduction = process.env.NODE_ENV === "production";
 // console.log(process.env.NODE_ENV);
@@ -14,7 +16,8 @@ let config = {
         // the folder path of the output file 
         path: path.resolve(__dirname, "dist"),
         // the name of the output file 
-        filename: "bundle.js"
+        filename: "bundle.js",
+        clean: true // cleans the output folder before building
     },
 
     // source map for debugging - it is added to the output file (bundle.js in this case)
@@ -28,7 +31,8 @@ let config = {
         static: "./dist", // the folder to serve the files from
         open: true, // opens the browser after server is successfully started
         hot: false, // Note: "hot" must be set to false for "liveReload" to work
-        liveReload: true // reloads the page when the files change
+        watchFiles: ["src/**/*", "index.html"] // watches the files for changes
+        // liveReload: true, // reloads  page when files change, true by default; watch files above can be more specific
     },
 
     target: "web", // "node" or "web" (web is default)
@@ -39,14 +43,21 @@ let config = {
          * resolve the one with the extension listed first in the array and skip the rest. 
          * This is what enables users to leave off the extension when importing
          */
-        //extensions: ['.js', '.json', '.ts', '.tsx'] - TODO: remove this line
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.less']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.less'] // 
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './index.html',
             filename: 'index.html'
-         })
+         }),
+        new MiniCssExtractPlugin({
+            filename: "bundle.css"
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+              { from: './src/images/qa.png', to: 'qa.png' }, // Copy favicon to the build directory
+            ],
+          }),
 	],
     module:{
         /** "rules"
@@ -59,14 +70,14 @@ let config = {
             {
                 test: /\.less$/i,
                 use: [
-                    { loader: 'style-loader' }, // Injects styles into DOM
-                    { loader: 'css-loader' },   // Resolves CSS imports and translates CSS into CommonJS
-                    { loader: 'less-loader' }   // Compiles Less to CSS
+                    MiniCssExtractPlugin.loader, // Extracts CSS into separate files
+                    'css-loader',                // Resolves CSS imports and translates CSS into CommonJS
+                    'less-loader'                // Compiles Less to CSS
                 ]
             },
             {
 				test: /\.css$/,
-				use: ["style-loader", "css-loader"],
+				use: [MiniCssExtractPlugin.loader, "css-loader"], // css-loader happens first (reverse order)
 			},
             { 
 				test: /\.(ts|tsx)$/i,
@@ -101,7 +112,8 @@ if(isProduction){
     config.watch = false;
     config.output = {
         path: path.resolve(__dirname, "build"),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        clean: true // cleans the output folder before building
     };
 }
 

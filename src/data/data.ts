@@ -6,20 +6,20 @@ export interface Question {
 function getApplicationData(): ReadonlyArray<Question> {
 	return [
 		{
-			"Question": "What is Frontend Mentor, and how will it help me?",
-			"Answer": "Frontend Mentor offers realistic coding challenges to help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for all levels and ideal for portfolio building.",
+			"Question": "How can I reset my password on your website?",
+			"Answer": "You can reset your password by clicking on the \"Forgot Password\" link on the login page. Follow the instructions sent to your registered email address to reset your password securely.",
 		},
 		{
-			"Question": "Is Frontend Mentor free?",
-			"Answer": "Yes, Frontend Mentor offers both free and premium coding challenges, with the free option providing access to a range of projects suitable for all skill levels.",
+			"Question": "What payment methods do you accept?",
+			"Answer": "We accept payments via credit cards (Visa, MasterCard, American Express), PayPal, and sometimes direct bank transfers. Our checkout process will guide you through the available options.",
 		},
 		{
-			"Question": "Can I use Frontend Mentor projects in my portfolio?",
-			"Answer": "Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent way to showcase your skills to potential employers!",
+			"Question": "How long does shipping typically take?",
+			"Answer": "Shipping times vary depending on your location and the shipping method chosen. Standard shipping within the continental US usually takes 3-7 business days, while international shipping may take longer.",
 		},
 		{
-			"Question": "How can I get help if I'm stuck on a Frontend Mentor challenge?",
-			"Answer": "The best place to get help is inside Frontend Mentor's Discord community. There's a help channel where you can ask questions and seek support from other community members.",
+			"Question": "Can I return or exchange an item if I'm not satisfied?",
+			"Answer": "Yes, we offer a return and exchange policy for most items within 30 days of purchase.",
 		},
 	];
 }

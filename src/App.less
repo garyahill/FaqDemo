@@ -15,12 +15,15 @@ body {
   
   .faq-container {
     background-color: hsl(0, 0%, 100%);
-    position: fixed;
-    top: 275px;
     width: 40%;
-    margin-bottom: 50px;
     border-radius: 20px;
     padding: 30px;
+
+    position: absolute;
+    margin: auto; /* Center horizontally */
+    top: 50%;
+    transform: translateY(-50%);
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
   }
   
   @media only screen and (max-width: 480px) {
@@ -29,8 +32,6 @@ body {
     }
   
     .faq-container {
-      position: fixed;
-      top: 180px;
       width: 75%;
     }
     
