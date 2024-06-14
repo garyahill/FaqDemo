@@ -1,0 +1,110 @@
+body {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDQwIiBoZWlnaHQ9IjMyMCIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE0NDAgMzIwIj48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMzMDE1MzQiIGQ9Ik0wIDBoMTQ0MHYzMjBIMHoiLz48cGF0aCBzdHJva2U9IiNBRDI4RUIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzIiBkPSJNLTY3Ni0xODJDLTQ1NC0xMC0zOTYuODYzIDcxLjg4OC0xOTcuNSAxNDMuNS05OSAxNzguODgyLTM2LjkxOSAxNzAuNzI2LTQuNzUxIDE3MC4xMDhjMTA0LjQ4Ny0yLjAxIDIwNC42MDktNDMuMjM3IDI5OC42MzMtODUuNDk1IDM4LjM1NC0xNy4yMzggNzUuODgyLTM2LjE4OSAxMTIuMDYzLTU3LjYzIDIzLjkwMy0xNC4xNjUgNTguODctMzMuOTEzIDY0LjcyMS02NC40MiAyLjMyLTEyLjEwMi0xNi4zNjktMTIuMjQtMjMuNzcxLTkuNzg5LTEzLjUxMSA0LjQ3NC0yNS45NSAxNi41NDQtMzYuMDU2IDI1LjY2OS0xOS4xMzEgMTcuMjczLTM3LjA2MiAzNS45NDgtNTMuMjM1IDU2LjAzMS0zMy43MjggNDEuODgzLTY4LjAzNCAxMDAuMjQ3LTM0LjE1OCAxNTIuMDE0IDE3LjI4NyAyNi40MTUgNDMuOTQgNDUuNjkzIDcyLjExMiA1OS4xMjcgNTYuMTgyIDI2Ljc5MSAxMTkuMjA1IDM4Ljc0MiAxODAuNzc4IDQ0LjE0NiAxNjQuNDM4IDE0LjQzMiAzMjguOTY0LTMuNDYxIDQ4My4wMDQtNjMuNjIyIDc5Ljc2LTMxLjE0OCAxNTguNTUtNzAuNTM5IDIyNC4yMy0xMjYuMjQ1IDQ4LjU2LTQxLjE4NiAxMDIuOC05Ni41NDggMTEwLjY2LTE2Mi45IDEwLjkzLTkyLjE4Ny05NC4wNC0xMzYuMDYyLTE2OS4yOS0xNDguNDE4LTYxLjQxLTEwLjA4NC0xMjMuNzUtNC4xNjQtMTg0LjA3IDkuNTg4LTc4LjI2MiAxNy44NC0xNDkuMDA2IDQ3LjY3LTIxNC4yNDEgOTQuMzg0LTEzMC4wMDIgOTMuMDkzLTIzNC45NSAyMjguNDEzLTI3Mi40NjYgMzg1LjgyNy0xNS42NCA2NS42MjUtMTYuNjQ4IDEzOC4yMSA1LjQ5MyAyMDIuNTUxIDIxLjQ1MiA2Mi4zMzggNjkuMTk2IDExMC41NzYgMTI0LjA0OCAxNDQuOTIzIDY1LjExNyA0MC43NzQgMTM3LjE2MSA2Mi4xNCAyMTIuODM5IDczLjIxIDEwMC40NzQgMTQuNjk2IDIwMi44MTcgMTIuMjMzIDMwMy4wMjctMi45OTcgMTc2LjE3LTI2Ljc3MiAzNTIuNzMtODguNDMxIDUwNS4xOC0xODEuMDc3IDEwMy4yMi02Mi43MjUgMTk5LjMtMTM0LjE1IDI4MC4wNi0yMjQuNDI1IDE3LjctMTkuNzkzIDMxLjgxLTQwLjg3NSA0My43NC02NC41MjFDMjE3Mi4xMS01OC41IDIwOTUuNS0xNDUuNTI4IDIwOTUuNS0xNTEiLz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJhIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAwaDE0NDB2MzIwSDB6Ii8+PC9jbGlwUGF0aD48L2RlZnM+PC9zdmc+);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% auto;
+  background-color: hsl(275, 100%, 97%);
+}
+.app-container {
+  display: flex;
+  flex-direction: row;
+  /* This prop defines the main axis (row is the default) */
+  justify-content: center;
+  /* This prop aligns items on the main axis */
+  align-items: flex-end;
+  /* This prop aligns items on the cross axis */
+}
+.faq-container {
+  background-color: hsl(0, 0%, 100%);
+  position: fixed;
+  top: 275px;
+  width: 40%;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  padding: 30px;
+}
+@media only screen and (max-width: 480px) {
+  body {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNzUiIGhlaWdodD0iMjMyIiBmaWxsPSJub25lIiB2aWV3Qm94PSIwIDAgMzc1IDIzMiI+PGcgY2xpcC1wYXRoPSJ1cmwoI2EpIj48cGF0aCBmaWxsPSIjMzAxNTM0IiBkPSJNMCAwaDM3NXYyMzJIMHoiLz48cGF0aCBzdHJva2U9IiNBRDI4RUIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzIiBkPSJNLTg2MC0xMTkuMTM5Qy02OTMuNDE2IDkuODU4LTY1MC41NDEgNzEuMjcxLTUwMC45NDMgMTI0Ljk3OWM3My45MTIgMjYuNTM2IDEyMC40OTcgMjAuNDIgMTQ0LjYzNSAxOS45NTYgNzguNDA1LTEuNTA3IDE1My41MzUtMzIuNDI3IDIyNC4wODgtNjQuMTIgMjguNzgtMTIuOTI4IDU2Ljk0LTI3LjE0IDg0LjA5LTQzLjIyQy0zMC4xOTMgMjYuOTctMy45NTUgMTIuMTYuNDM1LTEwLjcyYzEuNzQxLTkuMDc2LTEyLjI4My05LjE4LTE3LjgzNy03LjM0Qy0yNy41NC0xNC43MDctMzYuODc0LTUuNjU0LTQ0LjQ1OCAxLjE5Yy0xNC4zNTUgMTIuOTU0LTI3LjgxIDI2Ljk2LTM5Ljk0NiA0Mi4wMjItMjUuMzA5IDMxLjQxMS01MS4wNTIgNzUuMTg0LTI1LjYzMSAxMTQuMDA3IDEyLjk3IDE5LjgxMSAzMi45NyAzNC4yNyA1NC4xMSA0NC4zNDUgNDIuMTU5IDIwLjA5MiA4OS40NSAyOS4wNTUgMTM1LjY1MyAzMy4xMDggMTIzLjM5MSAxMC44MjQgMjQ2Ljg0OC0yLjU5NSAzNjIuNDM5LTQ3LjcxNSA1OS44NDctMjMuMzYgMTE4Ljk3Mi01Mi45MDMgMTY4LjI1NC05NC42ODEgMzYuNDM3LTMwLjg5IDc3LjE0MS03Mi40MSA4My4wNC0xMjIuMTcyIDguMTk2LTY5LjEzOC03MC41Ny0xMDIuMDQ0LTEyNy4wMzMtMTExLjMxMS00Ni4wODQtNy41NjMtOTIuODU2LTMuMTIzLTEzOC4xMjYgNy4xOTEtNTguNzIzIDEzLjM4LTExMS44MDggMzUuNzUyLTE2MC43NTkgNzAuNzg3QzE2OS45OTIgNi41ODggOTEuMjQxIDEwOC4wNzYgNjMuMDkgMjI2LjEzM2MtMTEuNzM2IDQ5LjIxOC0xMi40OTIgMTAzLjY1NSA0LjEyMiAxNTEuOTEgMTYuMDk3IDQ2Ljc1MiA1MS45MjMgODIuOTI5IDkzLjA4MyAxMDguNjg4IDQ4Ljg2MiAzMC41OCAxMDIuOTIzIDQ2LjYwNSAxNTkuNzEgNTQuOTA2IDc1LjM5NCAxMS4wMjMgMTUyLjE5MiA5LjE3NSAyMjcuMzg2LTIuMjQ3IDEzMi4xOTEtMjAuMDc5IDI2NC42NzctNjYuMzIxIDM3OS4wNzgtMTM1LjgwNCA3Ny40NTEtNDcuMDQzIDE0OS41NTEtMTAwLjYxIDIxMC4xNTEtMTY4LjMxNCAxMy4yOC0xNC44NDQgMjMuODctMzAuNjU2IDMyLjgyLTQ4LjM5IDEwNy43Mi0yMTMuMzk5IDUwLjI0LTI3OC42NjggNTAuMjQtMjgyLjc3MiIvPjwvZz48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMzc1djIzMkgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==);
+  }
+  .faq-container {
+    position: fixed;
+    top: 180px;
+    width: 75%;
+  }
+}
+
+.question {
+  display: flex;
+  font-family: 'Work Sans';
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
+.question button {
+  position: relative;
+  top: -7px;
+  border: none;
+  background: none;
+}
+.question img {
+  cursor: pointer;
+}
+.answer {
+  font-family: 'Work Sans';
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.container {
+  margin-bottom: 50px;
+}
+.container:last-child {
+  margin-bottom: 30px;
+}
+
+.title-container {
+  display: flex;
+  margin-bottom: 40px;
+}
+.title {
+  font-family: 'Work Sans';
+  font-size: 46px;
+  margin-left: 20px;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/worksans/v19/QGY_z_wNahGAdqQ43RhVcIgYT2Xz5u32K67QNig.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/worksans/v19/QGY_z_wNahGAdqQ43RhVcIgYT2Xz5u32K5fQNig.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/worksans/v19/QGY_z_wNahGAdqQ43RhVcIgYT2Xz5u32K0nXNig.ttf) format('truetype');
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+
+/*# sourceMappingURL=bundle.css.map*/
